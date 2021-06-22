@@ -10,20 +10,22 @@ function __init__()
     global webdriver = py"webdriver"
 end
 
-"Spawns a graphical Firefox browser controlled by Selenium."
-function spawn()
-    driver = webdriver.Firefox()
+"Spawns a Firefox browser controlled by Selenium."
+function spawn_driver(;timewait::Int=0, headless::Bool=false)
+    opts = headless && begin
+        opts = webdriver.FirefoxOptions()
+        opts.set_headless()
+        return opts
+    end
+    if opts != false
+        driver = webdriver.Firefox(firefox_options=opts)
+    else
+        driver = webdriver.Firefox()
+    end
+    timewait > 0 && driver.implicitly_wait(timewait)
     return driver
 end
 
-"Spawns a headless Firefox browser controlled by Selenium."
-function spawn_headless()
-    opts = webdriver.FirefoxOptions()
-    opts.set_headless()
-    driver = webdriver.Firefox(firefox_options=opts)
-    return driver
-end
-
-export spawn, spawn_headless
+export spawn_driver
 
 end
