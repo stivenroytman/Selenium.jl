@@ -3,6 +3,10 @@ uuid = "27ae57bd-d065-439e-8e01-a0f7dc8d05bb"
 authors = ["Stiven Roytman <stiven.roytman@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
 [compat]
 julia = "1"
 
