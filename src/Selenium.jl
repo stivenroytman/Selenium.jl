@@ -15,14 +15,16 @@ function spawn_driver(;timewait::Int=0, headless::Bool=false)
     opts = headless && begin
         opts = webdriver.FirefoxOptions()
         opts.set_headless()
-        return opts
+	opts
     end
     if opts != false
         driver = webdriver.Firefox(firefox_options=opts)
     else
         driver = webdriver.Firefox()
     end
-    timewait > 0 && driver.implicitly_wait(timewait)
+    if timewait > 0
+	    driver.implicitly_wait(timewait)
+    end
     return driver
 end
 
