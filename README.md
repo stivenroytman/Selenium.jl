@@ -9,7 +9,7 @@
 
 ``` julia
 using Pkg
-Pkg.add("https://github.com/stivenroytman/Selenium.git")
+Pkg.add(url="https://github.com/stivenroytman/Selenium.git")
 ```
 
 ## Usage
