@@ -17,12 +17,12 @@ Pkg.add(url="https://github.com/stivenroytman/Selenium.git")
 ``` julia
 using Selenium
 
-# Spawn graphical driver
-driver = spawn()
+# Spawn graphical driver that waits 3 seconds for the page to load.
+driver = spawn_driver(;timewait=3)
 
-# Spawn headless driver
-h_driver = spawn_headless()
+# Spawn headless driver that doesn't wait for the page to load.
+h_driver = spawn_driver(;headless=true)
 
 ```
 
-You can use both driver objects in roughly the same way as you would in Python.
+After initializing the driver, you should be able to use all the same methods in Julia as you normally would in Python.
